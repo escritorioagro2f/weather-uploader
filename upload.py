@@ -45,3 +45,5 @@ print("Weathercloud:", wc.text)
 resp = requests.get(url, params=params)
 print("WU:", resp.text)
 print(f"Temp: {temp_f}F | Hum: {hum}% | Press: {press}inHg | UV: {uv}")
+
+
