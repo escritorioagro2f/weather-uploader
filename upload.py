@@ -35,14 +35,16 @@ params = {
 }
 wc_params = {
     "wid": WCID, "key": WCKY,
-    "temp": d["temp_current_external"],
+    "temp": round(d["temp_current_external"]/10, 1),
     "hum": hum,
-    "wspd": d["windspeed_avg"],
-    "wspdhi": d["windspeed_gust"],
-    "rain": d["rain_1h"],
-    "bar": d["atmospheric_pressture"],
+    "wspd": round(d["windspeed_avg"]/10, 1),
+    "wspdhi": round(d["windspeed_gust"]/10, 1),
+    "wdir": d.get("wind_direction", 0),
+    "rain": round(d["rain_1h"]/10, 1),
+    "bar": round(d["atmospheric_pressture"]/10, 1),
     "uvi": uv,
-    "dew": d["dew_point_temp"]
+    "dew": round(d["dew_point_temp"]/10, 1)
+}
 }
 wc = requests.get("https://api.weathercloud.net/v01/set", params=wc_params)
 print("Weathercloud:", wc.text)
