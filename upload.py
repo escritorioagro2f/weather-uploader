@@ -45,7 +45,6 @@ wc_params = {
     "uvi": uv,
     "dew": round(d["dew_point_temp"]/10, 1)
 }
-}
 wc = requests.get("https://api.weathercloud.net/v01/set", params=wc_params)
 print("Weathercloud:", wc.text)
 resp = requests.get(url, params=params)
