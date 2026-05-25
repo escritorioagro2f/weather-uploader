@@ -3,6 +3,8 @@ import tinytuya, requests, json
 DEV = "eb0238bf2ba8be7e86npyl"
 WID = "ITAIAU3"
 WKY = "vqz5PM0x"
+WCID = "2ef92e45844e22d8"
+WCKY = "8da6e250dcd655ef52771d1975e29b14"
 
 c = tinytuya.Cloud(
     apiRegion="us",
@@ -31,7 +33,15 @@ params = {
     "windgustmph": gust, "rainin": rain_h, "dailyrainin": rain_d,
     "baromin": press, "UV": uv, "dewptf": dew_f
 }
-
+wc_params = {
+    "wid": WCID, "key": WCKY, "temp": round(d["temp_current_external"]/10, 1),
+    "hum": hum, "wspd": round(d["windspeed_avg"]*0.277778, 1),
+    "wspdhi": round(d["windspeed_gust"]*0.277778, 1),
+    "rain": d["rain_1h"], "bar": d["atmospheric_pressture"],
+    "uvi": uv, "dew": round(d["dew_point_temp"]/10, 1)
+}
+wc = requests.get("https://api.weathercloud.net/v01/set", params=wc_params)
+print("Weathercloud:", wc.text)
 resp = requests.get(url, params=params)
 print("WU:", resp.text)
 print(f"Temp: {temp_f}F | Hum: {hum}% | Press: {press}inHg | UV: {uv}")
