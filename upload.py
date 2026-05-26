@@ -15,7 +15,7 @@ c = tinytuya.Cloud(
 
 r = c.getstatus(DEV)
 d = {i["code"]: i["value"] for i in r["result"]}
-
+print("TODOS OS DADOS:", json.dumps(d, indent=2))
 temp_f  = round(d["temp_current_external"] / 10 * 9/5 + 32, 1)
 hum     = d["humidity_outdoor"]
 wind    = round(d["windspeed_avg"] * 0.621371, 1)
