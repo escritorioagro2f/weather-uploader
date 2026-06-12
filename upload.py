@@ -4,8 +4,8 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 DEV = "eb0238bf2ba8be7e86npyl"
-WID = "ITAIAU3"
-WKY = "vqz5PM0x"
+WID = "IPITAN9"
+WKY = "Nt9ZDzMC"
 WCID = "2ef92e45844e22d8"
 WCKY = "8da6e250dcd655ef52771d1975e29b14"
 SHEET_ID = os.environ["SHEET_ID"]
