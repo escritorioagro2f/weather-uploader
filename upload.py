@@ -92,7 +92,7 @@ if len(values) < 2:
 else:
     row = values[1]
     saved_date = row[0]
-    t_max, t_min, p_max, p_min, chuva, v_soma, v_cont, uv_max = [float(x) for x in row[1:9]]
+    t_max, t_min, p_max, p_min, chuva, v_soma, v_cont, uv_max = [float(x.replace(",", ".")) for x in row[1:9]]
 
     if saved_date != today_str:
         vento_medio = round(v_soma / v_cont, 1) if v_cont else 0
@@ -110,4 +110,3 @@ else:
         estado.update(range_name="A2:I2", values=[[today_str, round(t_max,1), round(t_min,1), p_max, p_min, round(chuva,1), round(v_soma,1), v_cont, uv_max]])
 
 print("Google Sheets atualizado!")
-
